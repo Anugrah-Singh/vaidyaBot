@@ -47,11 +47,38 @@ function PatientDetails() {
 					<p><strong>Summary:</strong> {patientData.summary}</p>
 					<p><strong>Created At:</strong> {new Date(patientData.createdAt).toLocaleString()}</p>
 					<p><strong>Updated At:</strong> {new Date(patientData.updatedAt).toLocaleString()}</p>
+					
+					{/* New sections */}
+					<div>
+						<h2>Doctor Information</h2>
+						<p><strong>Doctor's Name:</strong> {patientData.doctor_name}</p>
+					</div>
+					<div>
+						<h2>Doctor's Summary</h2>
+						<p>{patientData.doctor_summary}</p>
+					</div>
+					<div>
+						<h2>Medical History</h2>
+						<p>{patientData.medical_history}</p>
+					</div>
+					<div>
+						<h2>Condition</h2>
+						<p>{patientData.condition}</p>
+					</div>
+					<div>
+						<h2>Medication</h2>
+						<p>{patientData.medication}</p>
+					</div>
+					<div>
+						<h2>Recent Test Results</h2>
+						<p>{patientData.recent_test_results}</p>
+					</div>
+					
+					{/* Add your chatbot implementation here */}
 				</div>
 			) : (
 				<p>Loading...</p>
 			)}
-			{/* Add your chatbot implementation here */}
 		</div>
 	);
 }
