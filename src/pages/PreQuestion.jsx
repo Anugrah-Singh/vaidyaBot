@@ -12,10 +12,10 @@ const PreQuestion = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
+    <div className="max-w-md mx-auto mt-10 p-8 bg-gradient-to-br from-white to-gray-100 rounded-xl shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl">
       {/* ...existing code... */}
       <select 
-        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white shadow-sm text-gray-700 font-medium transition-all duration-200 cursor-pointer hover:bg-gray-50"
         value={language} 
         onChange={handleLanguageChange}
       >

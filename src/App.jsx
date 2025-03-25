@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<DoctorDashboard />} />
         <Route path="/patient" element={<PreQuestion />} />
         <Route path="/upload" element={<FileUploadDemo />} />
-        <Route path="/PatientDetails" element={<PatientDetails />} />
+        <Route path="/PatientDetails/:patient_id" element={<PatientDetails />} />
       </Routes>
     </BrowserRouter>
   );
