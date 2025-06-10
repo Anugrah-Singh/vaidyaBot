@@ -20,7 +20,7 @@ const MedicalChatbot = () => {
   useEffect(() => {
     // Fetch patient details using patient_id from URL
     if (patient_id) {
-      axios.get(`http://192.168.28.168:5000/get_detailed_report/${patient_id}`)
+      axios.get(`http://192.168.28.205:5000/get_detailed_report/${patient_id}`)
         .then(response => {
           setPatientDetails(response.data);
           
@@ -60,7 +60,10 @@ const MedicalChatbot = () => {
   };
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Only scroll when new messages are added, not on initial load
+    if (conversation.length > 0) {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [conversation]);
 
   const sendMessage = async () => {
@@ -77,7 +80,7 @@ const MedicalChatbot = () => {
 
     try {
       const updatedConversation = [ ...conversation, { role: 'user', content: userInput } ];
-      const response = await axios.post('http://192.168.137.50:8000/chat', {
+      const response = await axios.post('http://192.168.137.73:8080/chat', {
         context,
         conversation: updatedConversation
       });
@@ -98,6 +101,13 @@ const MedicalChatbot = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     sendMessage();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
   };
 
   return (
@@ -161,6 +171,7 @@ const MedicalChatbot = () => {
             ref={inputRef}
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder="Type your medical query..."
             className="flex-grow p-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 resize-none"
             rows={1}

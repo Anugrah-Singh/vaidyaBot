@@ -11,7 +11,7 @@ function DoctorDashboard() {
   useEffect(() => {
     async function fetchAppointments() {
       try {
-        const response = await axios.get('http://192.168.28.168:5000/get_n_appointments/661abcd123456789abcdef00');
+        const response = await axios.get('http://192.168.28.205:5000/get_n_appointments/661abcd123456789abcdef00');
         setAppointments(response.data);
       } catch (error) {
         console.error('Error fetching appointments:', error);
